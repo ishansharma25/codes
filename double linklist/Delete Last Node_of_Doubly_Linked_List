@@ -1,0 +1,30 @@
+/**
+ * Definition of doubly linked list:
+ *
+ * struct Node {
+ *      int data;
+ *      Node *prev;
+ *      Node *next;
+ *      Node() : data(0), prev(nullptr), next(nullptr) {}
+ *      Node(int val) : data(val), prev(nullptr), next(nullptr) {}
+ *      Node(int val, Node *p, Node *n) : data(val), prev(p), next(n) {}
+ * };
+ *
+ *************************************************************************/
+
+Node * deleteLastNode(Node *head) {
+    Node *start=head;
+    Node *del;
+    if(head->next==NULL)
+    {
+        return NULL;
+    }
+    while(head->next!=NULL)
+    {
+        del=head;
+        head=head->next;
+    }
+    //cout<<del->data;
+    del->next=NULL;
+    return start;
+}

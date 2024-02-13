@@ -1,0 +1,68 @@
+/************************************************************
+
+    Following is the LinkedList class structure:
+
+    class Node {
+    public:
+        int data;
+        Node *next;
+
+        Node(int val) {
+            this->data = val;
+            next = NULL;
+        }
+        ~Node() {
+            if (next != NULL) {
+                delete next;
+            }
+        }
+};
+
+************************************************************/
+
+Node * insert(Node * head, int n, int pos, int val) 
+{
+   Node *start=head;
+    Node *newnode=new Node(val);
+   int count=0;
+   if (head == NULL)
+    {
+     return newnode;
+    }
+    if(pos==0)
+    {
+    newnode->next=head;
+    head=newnode;
+    return head;
+    }
+   /* if(pos==n)
+    {
+        Node *start=head;
+   while(head->next!=NULL)
+   {
+    head=head->next;   
+   }
+    head->next=newnode;
+    newnode->next=NULL;
+   return start;
+    }*/
+
+   // cout<<n<<" "<<pos<<"\n";
+    while(head!=NULL)
+    {
+         
+          
+      if (count == pos-1)
+        {
+      
+      newnode->next=head->next;
+       head->next=newnode;
+      }
+       head = head->next;
+        count++;
+    
+    }
+      
+    return start;
+}
+

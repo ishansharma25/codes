@@ -1,0 +1,53 @@
+/****************************************************************
+Following is the Linked list node structure already written
+
+class Node
+{
+public:
+    int data;
+    Node* next;
+    Node(int data)
+    { 
+        this->data = data;
+        next = NULL;
+    }
+};
+*****************************************************************/
+
+Node* insertBeforeValue(Node* head, int x, int val){
+    
+
+   Node *start=head;
+    Node *newnode=new Node(x);
+   if (head == NULL)
+    {
+     return newnode;
+    }
+    if(head->data==val)
+    {
+      newnode->next=head;
+      head=newnode;
+      return head;
+    }
+    while(head!=NULL)
+    {
+      
+      
+      if (head->next->data==val)
+        {
+             
+      
+      newnode->next=head->next;
+       head->next=newnode;
+       break;
+      
+      }
+       head = head->next;
+    
+    
+    }
+      
+    return start;
+}
+
+

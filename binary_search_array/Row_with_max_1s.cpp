@@ -1,5 +1,9 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<climits>
+using namespace std;
 /*
-
 int rrow(vector<vector<int>> &matrix, int n, int m,int i)
 {
    int count=0;
@@ -12,7 +16,6 @@ int rrow(vector<vector<int>> &matrix, int n, int m,int i)
   }
   return count;
 }
-
 int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
    int count_r;
    int mini=0;
@@ -27,7 +30,6 @@ int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
          }
    }
    
-
    return ans;
 }
 */
@@ -44,28 +46,28 @@ while(low<=high)
    int mid=low+(high-low)/2;
    if (matrix[mid] >= 1) 
   {
- 
+
       ans1=mid;
-     
+
       high = mid - 1;  
     }
  else  
    {
-      
+
       low=mid+1;
    }
-   
+
 
 }
 
   return ans1;
- 
+
 }
 int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
-   
+
    int mini=0;
    int ans=-1;
-   
+
    for (int j = 0; j < n; j++) 
    {
     int count_r =rrow(matrix[j], m);
@@ -87,4 +89,3 @@ int main()
     cout << "The row with maximum no. of 1's is: " <<
          rowWithMax1s(matrix, n, m) << '\n';
 }
-

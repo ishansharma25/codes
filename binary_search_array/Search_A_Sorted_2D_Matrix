@@ -1,0 +1,36 @@
+bool binarysearch(vector<int>MATRIX,int target,int m)
+{
+    int low=0;
+    int high=m-1;
+    while(low<=high)
+    {
+        int mid=low+(high-low)/2;
+        if(MATRIX[mid]==target)
+        {
+            return true;
+        }
+        else if(MATRIX[mid]<=target)
+        {
+            low=mid+1;
+        }
+        else
+        {
+            high=mid-1;
+
+        }
+    }
+    return false;
+}
+bool searchElement(vector<vector<int>> &MATRIX, int target) {
+   int n=MATRIX.size();
+   int m=MATRIX[0].size();
+   for(int i=0;i<n;i++)
+   {
+       if(MATRIX[i][0]<=target&&MATRIX[i][m-1]>=target)
+       {
+           return binarysearch(MATRIX[i],target,m);
+       }
+
+   }
+   return false;
+}

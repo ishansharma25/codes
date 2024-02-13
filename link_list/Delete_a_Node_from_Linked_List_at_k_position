@@ -1,0 +1,61 @@
+/****************************************************************
+ 
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+Node *deleteNode(Node *head, int pos)
+{
+    if(head==NULL)
+	{
+		//free(head);
+		return NULL;
+	}
+	if(pos==0)
+	{
+		return head->next;
+	}
+Node *list;
+list=head;
+	int n=0;
+	 while (list->next != NULL)
+		 {
+			 n++;
+			 list=list->next;
+        }
+		 if(n<=pos)
+	{
+		 return head;
+	}
+
+
+	Node *del;
+	list=head;
+	//cout<<list<<" "<<head;
+	int count=0;
+	while(head!=NULL)
+	{
+		 del=head->next;
+		if(count==pos-1)
+		{
+			head->next=del->next;
+		}
+		head=head->next;
+		count++;
+
+	}
+	
+	return list;
+}

@@ -1,0 +1,17 @@
+int searchInLinkedList(Node<int> *head, int k) 
+{
+    int ans=-1;
+    int count=0;
+    while(head!=NULL)
+    {
+        if(head->data==k)
+        {
+            return 1;
+        }
+        count++;
+        head=head->next;
+    }
+    return 0;
+    
+}
+

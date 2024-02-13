@@ -1,0 +1,85 @@
+/*bool rrow(vector<int> &a, int target,int m)
+{
+    
+   
+    int low=0;
+    int high=n-1;
+    
+     while(low<=high)
+    {
+        int mid=low+(high-low)/2;
+        if(a[mid]==target)
+        {
+            return true;
+        }
+        
+        else if(a[mid]<target)
+        {
+            low=mid+1;
+        }
+        else 
+        {
+            high = mid - 1;
+        }
+     }
+     return false;
+}
+bool searchMatrix(vector<vector<int>> &mat, int target) 
+{
+    int n=mat.size();
+    int m=mat[0].size();
+
+    
+   for(int i=0;i<n;i++)
+    {
+       // cout<<mat[i][m-1];
+        
+       if(mat[i][0]<=target&&mat[i][m-1]>=target)
+       {
+         //cout<<mat[i][m-1]<<"------------"<<mat[i][0]<<"\n";
+        return rrow(mat[i],target,m);
+       }
+       // cout<<mat[i][0];
+    }
+    return false;
+}*/
+
+/*bool searchMatrix(vector<vector<int>>& mat, int target) 
+{
+    int n=mat.size();
+    int m=mat[0].size();
+  for(int i=0;i<n;i++)
+  {
+      for(int j=0;j<m;j++)
+      {
+          if(mat[i][j]==target)
+          return true;
+      }
+  }
+  return false;
+        
+}*/
+
+
+bool searchElement(vector<vector<int>> &MATRIX, int target) 
+{
+    int n=MATRIX.size();
+    int m=MATRIX[0].size();
+    int left=0;
+    int down=m-1;
+    while(left<n&&down<n)
+    {
+     
+        if(MATRIX[left][down]==target)
+        return true;
+        else if(MATRIX[left][down]>target)
+        {
+            down--;
+        }
+        else
+        {
+            left++;
+        }
+    }
+    return false;
+}

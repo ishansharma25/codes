@@ -1,0 +1,101 @@
+/**
+ * Definition of doubly linked list:
+ *
+ * struct Node {
+ *      int value;
+ *      Node *prev;
+ *      Node *next;
+ *      Node() : value(0), prev(nullptr), next(nullptr) {}
+ *      Node(int val) : value(val), prev(nullptr), next(nullptr) {}
+ *      Node(int val, Node *p, Node *n) : value(val), prev(p), next(n) {}
+ * };
+ *
+ *************************************************************************/
+
+Node * insertBeforeTail(Node *head, int k) 
+{
+    Node *first=head;
+    Node *temp;
+   
+    Node *list=new Node(k);
+   
+   if(head==NULL)
+    {
+        return list;
+    }
+    if(head->next==NULL)
+    {
+        
+        head->next=list;
+        list->prev=head;
+        list->next=NULL;
+        return list;
+    }
+    while(first->next!=NULL)
+    {
+        first=first->next;
+    }
+    temp=first->prev;
+   
+     temp->next=list;
+     list->prev=temp;
+    list->next=first;
+    first->prev=list;
+   // head=list;
+  
+
+   
+
+  return head;
+}
+
+
+/*
+Node * insertBeforeTail(Node *head, int k) {
+
+    // Write your code here
+
+    Node* temp = head ; // storing the head so that it don't get tamper 
+
+    Node* newNode = new Node(k) ; // making a new node for inserting 
+
+ 
+
+    if ( head == NULL) return new Node(k) ;// base case 
+
+    if (head->next == NULL){  // this is the case when there is one node only 
+
+        head->next = newNode ;  
+
+        newNode->prev = head ;
+
+        newNode->next = NULL ;
+
+        return head ;
+
+    }
+
+    
+
+    while ( temp->next  != NULL){
+
+        temp = temp->next ; // after this loop your temp will be on the last element 
+
+    }
+
+    Node* prev = temp->prev ; // initializing the prev value just for simplicity 
+
+    prev->next = newNode ; 
+
+    newNode->next = temp ; 
+
+    newNode->prev = prev ; 
+
+    temp->prev = newNode ;
+
+    return head ;  // returning the head value 
+
+    
+
+}
+*/

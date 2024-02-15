@@ -1,0 +1,137 @@
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node()
+        {
+            this->data = 0;
+            next = NULL;
+        }
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+        Node(int data, Node* next)
+        {
+            this->data = data;
+            this->next = next;
+        }
+    };
+
+*****************************************************************/
+
+
+
+/****************************************brute force*******************
+bool isPalindrome(Node *head)
+{
+   //while(head->next!=NULL||head==NULL)
+   //return false;
+   int n=0;
+   Node *first=head;
+   Node *s=head;
+   while(first!=NULL)
+   {
+       n++;
+       first=first->next;
+   }
+   int a[n];
+   for(int i=0;i<n;i++)
+   {
+       a[i]=s->data;
+       s=s->next;
+
+   }
+  
+
+   int i=0;
+   int j=n-1;
+
+   while(i<=j)
+   {
+       if(a[i]==a[j])
+       {
+           i++;
+           j--;
+       }
+       else
+       {
+           return false;
+       }
+   }
+   cout<<"\n";
+   return true;
+   
+}
+
+*********************************************************/
+bool isPalindrome(Node *head) 
+{
+    if (head == nullptr || head->next == nullptr)
+        return true;
+
+     Node *slow=head;
+    Node *fast=head;
+    while(fast!=NULL&&fast->next!=NULL)
+     {
+          slow=slow->next;
+         fast=fast->next->next;
+         /*
+         if (fast==slow)
+          {
+              slow=head;
+             while(slow!=fast)
+             {
+                 slow=slow->next;
+          fast=fast->next;
+             }
+             return slow;
+          }*/
+    }
+
+    Node *temp=NULL;
+    Node *first=head;
+
+    Node *pre=slow->next;
+    while(pre!=NULL)
+    {
+        Node *new_node=pre->next;
+        pre->next=temp;
+        temp=pre;
+        pre=new_node;
+    }
+
+   
+
+    while(temp!=NULL)
+    {
+        if (first->data != temp->data)
+        {
+            return false;
+        }
+
+            first=first->next;
+            temp=temp->next;
+        
+        
+    }
+   /*while(temp!=nullptr)
+   {
+       cout<<temp->data;
+       temp=temp->next;
+   }*/
+   return true;
+}
+
+
+
+
+
+
+

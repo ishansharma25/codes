@@ -1,0 +1,46 @@
+/**
+ * Definition of linked list:
+ *
+ * class Node {
+ * public:
+ *      int data;
+ *      Node *next;
+ *
+ *      Node(int data) {
+ *          this->data = data;
+ *          this->next = NULL;
+ *      }
+ * };
+ *
+ *************************************************************************/
+
+int lengthOfLoop(Node *head) {
+    // Write your code here
+    Node *slow=head;
+    Node *fast=head;
+    int cnt=1;
+   
+    while(fast!=NULL&&fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+      
+        if(slow==fast)
+        {
+             
+            while(slow->next!=fast)
+            {
+                slow=slow->next;
+                cnt++;
+        
+            }
+           // cout<<slow->data;
+            
+        return cnt;
+            
+        }
+        
+    }
+    return 0;
+
+}

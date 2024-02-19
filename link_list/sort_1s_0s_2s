@@ -1,0 +1,223 @@
+/*
+Following is the class structure of the Node class:
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node()
+    {
+        this->data = 0;
+        next = NULL;
+    }
+    Node(int data)
+    {
+        this->data = data; 
+        this->next = NULL;
+    }
+    Node(int data, Node* next)
+    {
+        this->data = data;
+        this->next = next;
+    }
+};
+*/
+
+
+/*
+Node* middle_number(Node *head)
+{
+    Node *slow=head;
+    Node *fast=head->next;
+    while(fast!=NULL&&fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return slow;
+}
+
+
+Node *merge(Node *left,Node *right)
+{
+    Node *ans=new Node(-1);
+    Node *temp=ans;
+
+    while(left!=NULL&&right!=NULL)
+    {
+        if(left->data<right->data)
+        {
+            temp->next=left;
+            temp=left;
+            left=left->next;
+        }
+        else
+        {
+            temp->next=right;
+            temp=right;
+            right=right->next;
+
+        }
+    }
+      while(left!=NULL){
+        temp->next = left;
+        temp = left;
+        left = left->next;
+    }
+    while(right!=NULL){
+        temp->next = right;
+        temp = right;
+        right = right->next;
+    }
+    ans=ans->next;
+    return ans;
+}
+
+
+Node* sortList(Node* head){
+
+     if(head == NULL || head->next == NULL){
+        return head;
+    }
+    Node *first=head;
+   
+    Node *middle=middle_number(head);
+ // cout<<middle->data;
+  Node *left=head;
+  Node *right=middle->next;
+  middle->next=NULL;
+  left=sortList(left);
+  right=sortList(right);
+  Node *ans=merge(left,right);
+  return ans;
+
+}
+*/
+
+
+/*
+Node *sortList(Node *head) 
+{int cnt_0 = 0;
+    int cnt_1 = 0;
+    int cnt_2 = 0;
+    
+    // Count occurrences of each element
+    Node* curr = head;
+    while(curr != NULL) {
+        if(curr->data == 0) {
+            cnt_0++;
+        }
+        else if(curr->data == 1) {
+            cnt_1++;
+        }
+        else if(curr->data == 2) {
+            cnt_2++;
+        }
+        curr = curr->next;
+    }
+
+    
+    curr = head;
+    for(int i = 0; i < cnt_0; i++) {
+        curr->data = 0;
+        curr = curr->next;
+    }
+    for(int i = 0; i < cnt_1; i++) {
+        curr->data = 1;
+        curr = curr->next;
+    }
+    for(int i = 0; i < cnt_2; i++) {
+        curr->data = 2;
+        curr = curr->next;
+    }
+
+    return head;
+}*/
+
+
+
+Node* sortList(Node *head)
+
+{
+
+   
+
+   if(head==NULL || head->next==NULL)
+
+        return head;
+
+    Node* zeroHead=new Node(-1);
+
+    Node* zero= zeroHead;
+
+    Node* oneHead=new Node(-1);
+
+    Node* one= oneHead;
+
+    Node* twoHead=new Node(-1);
+
+    Node* two=twoHead;
+
+ 
+
+    Node *temp=head;
+
+ 
+
+    while(temp!=NULL)
+
+    {
+
+        if(temp->data==0)
+
+        {
+
+           zero->next = temp ;
+
+           zero=zero->next;
+
+        }
+
+        else if(temp->data==1)
+
+        {
+
+           one->next = temp ;
+
+           one=one->next;
+
+        }
+
+        else
+
+        {
+
+            two->next=temp;
+
+            two=two->next;
+
+        }
+
+        temp=temp->next;
+
+    }
+
+    zero->next=oneHead->next;
+
+    one->next=twoHead->next;
+
+    two->next=NULL;
+
+ 
+
+    return zeroHead->next;
+
+ 
+
+}
+
+
+
+
+

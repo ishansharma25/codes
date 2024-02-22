@@ -1,0 +1,61 @@
+Node * deleteAllOccurrences(Node* head, int k) {
+    Node *first=head;
+     Node *first1=head;
+    Node *temp1;
+    Node *temp;
+    while (first1->data==k) 
+    {
+         first1=first1->next;
+         if(first1==NULL)
+         {
+             return NULL;
+         }
+        
+          
+
+    }
+
+        if(first->data==k &&first->prev==NULL)
+        {
+            first=first->next;
+            first->prev=NULL;
+            head=first;
+        }
+ 
+    while(first->next!=NULL)
+    {
+         temp=first;
+         first=first->next;
+        
+      //  cout<<temp->data<<" "<<first->data<<" " ;
+       
+        if(first->data==k)
+        {
+          //  temp1=first->next;
+           
+            temp->next=first->next;
+          /*  if(first!=NULL)
+            {
+                temp1=first->next;
+
+            }
+            temp1->prev=temp;*/
+         //    cout<<temp->data<<" "<<first->data<<" "<<temp1->data<<" "<<"\n";
+           
+            
+
+        }
+         else if(first->data==k&&first->next==NULL)
+        {
+            temp->next=NULL;
+        }
+        
+            
+        
+    }
+  
+   
+    cout<<"\n";
+ 
+    return head;
+}

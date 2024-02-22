@@ -1,0 +1,113 @@
+
+Node* reverseLinkedList(Node *head)
+{
+    Node *temp=NULL;
+    Node *first=head;
+    while (first != NULL) 
+    {
+    Node *front=first->next;
+      first->next=temp;
+    
+      temp = first;
+      first= front;
+    }
+
+    return temp;
+}
+
+Node *addOne(Node *head) 
+{
+ 
+  Node *temp=reverseLinkedList(head);
+ Node *temp1=temp;
+ int c=1;
+ while(temp1!=NULL)
+ {
+   int sum=temp1->data+c;
+   c=sum/10;
+   temp1->data=sum%10;
+   temp1=temp1->next;
+
+ }
+temp=reverseLinkedList(temp);
+if(c!=0)
+{
+  Node *n= new Node(c);
+  n->next=temp;
+  return n;
+}
+  return temp;
+
+
+}
+
+/*
+Node *deleteLast(Node *list){
+    // Write your code here
+    Node *head,*del;
+    head=list;
+
+    while (list->next != NULL) {
+      del = list;
+
+      list = list->next;
+    }
+    // list=NULL;
+
+    del->next = NULL;
+    free(list);
+      return head;
+
+}
+
+
+Node* reverseLinkedList(Node *head)
+{
+    Node *temp=NULL;
+    Node *first=head;
+    while (first != NULL) 
+    {
+    Node *front=first->next;
+      first->next=temp;
+    
+      temp = first;
+      first= front;
+    }
+
+    return temp;
+}
+
+
+Node *addOne(Node *head)
+{
+    Node *first=new Node(-1);
+    Node *ans=first;
+   
+   long long sum=0;
+   while(head!=NULL)
+   {
+       sum=sum*10+head->data;
+       head=head->next;
+   }
+  
+   sum=sum+1;
+ ///  cout<<sum<<"\n";
+   
+   
+    while(sum>0)
+    {
+         long long a=sum%10;
+        sum=sum/10;
+        ans->next=new Node(a);
+        ans=ans->next;
+    }
+    
+    Node *temp=reverseLinkedList(first);
+    
+    
+  
+   return deleteLast(temp);
+
+
+}*/
+

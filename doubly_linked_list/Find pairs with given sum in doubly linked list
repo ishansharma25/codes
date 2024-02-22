@@ -1,0 +1,31 @@
+
+#include <map>
+vector<pair<int, int>> findPairs(Node *head, int k) 
+{
+  Node *first = head;
+  Node *first1 = head;
+  int sum=0;
+  vector<pair<int, int>> p;
+  map<int,int> mp;
+  int i=0;
+  while(first!=NULL)
+  {
+     sum=k-first->data;
+     
+     if(mp.find(sum)!=mp.end())
+     {
+         p.push_back(make_pair(first->data,sum));
+
+     }
+     
+        mp[first->data]=sum;
+       
+
+     
+     first=first->next;
+  }
+
+  return p;
+}
+
+

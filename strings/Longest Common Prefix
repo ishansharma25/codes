@@ -1,0 +1,25 @@
+from typing import List
+
+
+def commonPrefix(arr: List[str], n: int) -> str:
+    if n == 0:
+        return "-1"
+    arr.sort()
+    ans=-1
+   
+    prefix = arr[0]
+    prefix1 = arr[n-1]
+    i=0
+    j=0
+    
+    while(i<len(prefix)):
+        if(prefix[i]==prefix1[j]):
+            i=i+1
+            j=j+1
+        else:
+            
+            break
+    
+    if(i==0 and j==0):   
+        return "-1"
+    return prefix[:i]

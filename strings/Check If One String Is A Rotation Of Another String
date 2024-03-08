@@ -1,0 +1,35 @@
+int isCyclicRotation(string &p, string &q) 
+{
+   int n=p.size();
+   int m=q.size();
+
+   if(n!=m)
+   {
+       return 0;
+   }
+   string con=p+p;
+   int j=0;
+  // int c=0;
+   for(int i=0;i<con.size();i++)
+   {
+       if(con[i]==q[j])
+       {
+           //c++;
+           j++;
+           if(j==m)
+           {
+               return 1;
+
+           }
+           
+       }
+       else{
+           j=0;
+          // c=0;
+       }
+      
+       
+   }
+  
+   return 0;
+}

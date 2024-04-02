@@ -1,0 +1,36 @@
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        for i in range(len(s)):
+            if(s[i]==goal[0]):
+                if(s[i:]+s[:i]==goal):
+                    return True
+        return False
+        
+
+
+'''
+class Solution:
+    def rotateString(self, s: str, goal: str) -> bool:
+        def rotate(s:str,start,end):
+            return s[start:end+1] + s[:start] + s[end+1:]
+        c=-1
+        n=len(s)
+        for i in range(len(s)):
+            c=c+1
+            if(s[i]==goal[0]):
+                break
+        
+       
+        s=rotate(s,0,c-1)
+        s=rotate(s,c,n)
+        s=rotate(s,0,n)
+        if(s==goal):
+            return True
+        return False
+        
+           ''' 
+
+
+
+
+        

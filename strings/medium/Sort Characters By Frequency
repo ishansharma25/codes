@@ -26,6 +26,33 @@ class Solution:
         return l      
 '''
 
+//---------------c++------------------------
+class Solution {
+public:
+    string frequencySort(string s) {
+        unordered_map<char, int> freqMap;
+        int maxFreq = 0;
+        
+        // Count frequencies of characters
+        for (char c : s) {
+            freqMap[c]++;
+            maxFreq = max(maxFreq, freqMap[c]);
+        }
+        
+        // Construct sorted string based on frequencies
+        string sortedStr;
+        while (maxFreq > 0) {
+            for (auto& kv : freqMap) {
+                if (kv.second == maxFreq) {
+                    sortedStr.append(kv.second, kv.first);
+                }
+            }
+            maxFreq--;
+        }
+        
+        return sortedStr;
+    }
+};
 
 
         

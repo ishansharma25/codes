@@ -1,0 +1,31 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        d={}
+        max_freq = 0
+        for i in s:
+            d[i]=1+d.get(i,0)
+            max_freq = max(max_freq, d[i])
+
+
+        sorted_str = ''
+        while max_freq > 0:
+            for char, freq in d.items():
+                if freq == max_freq:
+                    sorted_str += char * freq
+            max_freq -= 1
+
+        return sorted_str 
+
+
+
+'''
+      p=sorted(d.items(), key=lambda item: item[1], reverse=True)
+        l=''
+        for k,v in p:
+            l+=k*v
+        return l      
+'''
+
+
+
+        

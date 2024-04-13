@@ -1,0 +1,23 @@
+class Solution:
+    def po(self,x,pow):
+        temp=0
+        if pow==0:
+            return 1
+        temp=self.po(x,pow//2)
+        if pow%2==0:
+            return (temp*temp)%(10**9 + 7)
+        else:
+            return (temp*temp*x)%(10**9 + 7)
+
+
+    def countGoodNumbers(self, n: int) -> int:
+        even=(n+1)//2
+        odd=n//2
+        first=self.po(5,even)
+        second=self.po(4,odd)
+        return (first*second)%(10**9 + 7)
+
+        
+
+
+

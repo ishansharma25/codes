@@ -1,19 +1,17 @@
+from typing import List
+
 class Solution:
 
-
-    def sub(self,nums,s,n,ans):
-        if(n==len(nums)):
+    def sub(self, nums, s, n, ans):
+        if n == len(nums):
             ans.append(s.copy())
-            return ans
-        self.sub(nums,s,n+1,ans)
-        s.append(nums[n])
-        self.sub(nums,s,n+1,ans)
-        s.pop()
+            return
+        self.sub(nums, s + [nums[n]], n + 1, ans)  # Include current element
+        self.sub(nums, s, n + 1, ans)  # Exclude current element
 
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.s=[]
-        self.ans=[]
-        self.sub(nums,self.s,0,self.ans)
+        self.ans = []
+        self.sub(nums, [], 0, self.ans)
         return self.ans
 
 

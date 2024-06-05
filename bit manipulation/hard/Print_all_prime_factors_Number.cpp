@@ -8,14 +8,14 @@ class Solution{
 	        return false;
 	    }
 	    int c=0;
-	    for (int i=2;i<x;i++)
+	    for (int i=1;i<x;i++)
 	    {
 	        if(x%i==0)
 	        {
 	            c++;
 	        }
 	    }
-	    if(c==0)
+	    if(c==1)
 	    {
 	        return true;
 	    }
@@ -26,7 +26,7 @@ class Solution{
 	}
 	vector<int>AllPrimeFactors(int N) {
 	    vector<int> v;
-	    for(int i=2;i<=N;i++)
+	    for(int i=1;i<sqrt(N);i++)
 	    {
 	        if(N%i==0)
 	        {
@@ -34,10 +34,22 @@ class Solution{
 	            {
 	                v.push_back(i);
 	            }
+	            if((N/i)!=i)
+	            {
+	                if(isprime(N/i))
+	                {
+	                    v.push_back(N/i);
+	                }
+	            }
+	           
 	        }
+	        
 	    }
 	    return v;
 	    
 	    // Code here
 	}
 };
+
+
+/*optimal*/

@@ -21,7 +21,11 @@ class Solution:
         
         for i in range(2,int(n**0.5)+1):
             if(l[i]):
-                j=i*i # to check that it do not accessed the range
+                j=i*i # to check that it does not accessed the range
+                '''
+        for j in range(i*i, n, i):
+            l[j] = False
+            '''
                 while(j<n):                    
                     l[j]=False
                     j=j+i
